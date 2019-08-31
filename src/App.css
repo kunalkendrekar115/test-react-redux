@@ -25,17 +25,21 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.groceryApp{
+.groceryApp {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.types{
+.types {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -45,47 +49,46 @@
   width: 30%;
   padding: 20px;
   text-align: left;
- 
 }
 
-.listTable{
+.listTable {
   flex: 1;
   padding: 20px;
   text-align: left;
 }
 
-.selectedItem{
+.selectedItem {
   display: flex;
   flex-direction: column;
   text-align: center;
   padding: 10px;
 }
 
-.selectedItemRow{
+.selectedItemRow {
   flex-direction: row;
   display: flex;
   padding: 10px 8px;
   justify-content: space-between;
   border-bottom: 1px solid black;
- 
 }
-.addItemButton{
+.addItemButton {
   padding: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
   border-radius: 1px solid #d1d1d1;
 }
-.groceryListTable{
+.groceryListTable {
   width: 100%;
   border: 1px solid black;
   border-collapse: collapse;
 }
 
-.optionButton{
+.optionButton {
   padding: 5px;
-  margin:0px 10px;
+  margin: 0px 10px;
   border-radius: 1px solid #d1d1d1;
 }
-.groceryListTable th,.groceryListTable td{
+.groceryListTable th,
+.groceryListTable td {
   padding: 8px;
   border: 1px solid black;
   border-collapse: collapse;
