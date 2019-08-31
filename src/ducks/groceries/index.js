@@ -56,15 +56,38 @@ export default function reducer(state = initialState, action) {
 
     case REMOVE_ITEM:
       // Write a custom reducer that will remove an item from the list array
-      return state; 
 
+      let index = state.list.findIndex((item) => payload.id == item.id)
+
+      // If item to be removed is selected then deselect and remove item
+      if (state.list[index].id == state.selectedItem.id) {
+        
+        return update(state, {
+          list: { $splice: [[index, 1]] },
+          isItemSelected: { $set: false },
+          selectedItem: { $set: initialState.selectedItem }
+        });
+
+      } else {
+        return update(state, {
+          list: { $splice: [[index, 1]] },
+        });
+      }
     case SELECT_ITEM:
       // Write a custom reducer that will select an item
-      return state;
+
+      return update(state, {
+        isItemSelected: { $set: true },
+        selectedItem: { $set: payload }
+      });
+
 
     case DESELECT_ITEM:
       // Write a customer reducer that will deselect an item
-      return state;
+      return update(state, {
+        isItemSelected: { $set: false },
+        selectedItem: { $set: initialState.selectedItem }
+      });
 
     default:
       return state;
@@ -74,5 +97,20 @@ export default function reducer(state = initialState, action) {
 // Action Creators
 export const addItem = item => ({
   type: ADD_ITEM,
+  payload: item,
+});
+
+export const selectItem = item => ({
+  type: SELECT_ITEM,
+  payload: item,
+});
+
+export const deselectItem = item => ({
+  type: DESELECT_ITEM,
+  payload: item,
+});
+
+export const removeItem = item => ({
+  type: REMOVE_ITEM,
   payload: item,
 });

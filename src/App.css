@@ -45,6 +45,7 @@
   width: 30%;
   padding: 20px;
   text-align: left;
+ 
 }
 
 .listTable{
@@ -53,7 +54,38 @@
   text-align: left;
 }
 
+.selectedItem{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
+}
+
+.selectedItemRow{
+  flex-direction: row;
+  display: flex;
+  padding: 10px 8px;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+ 
+}
 .addItemButton{
   padding: 20px;
   border-radius: 1px solid #d1d1d1;
+}
+.groceryListTable{
+  width: 100%;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.optionButton{
+  padding: 5px;
+  margin:0px 10px;
+  border-radius: 1px solid #d1d1d1;
+}
+.groceryListTable th,.groceryListTable td{
+  padding: 8px;
+  border: 1px solid black;
+  border-collapse: collapse;
 }
