@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { addItem, selectItem ,deselectItem,removeItem} from '../ducks/groceries';
+import { addItem, selectItem ,deselectItem,removeItem} from '../actions';
 
 import ListInputs from './ListInputs';
 import ListSelection from './ListSelection';
