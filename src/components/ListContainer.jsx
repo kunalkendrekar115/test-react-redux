@@ -30,10 +30,10 @@ const mapDispatchToProps = dispatch => {
 
 
 class ListContainer extends Component {
-  componentWillMount() {
-    /* eslint-disable no-console */
-    console.log('groceryList', this.props.groceryList, this);
-  }
+  // componentWillMount() {
+  //   /* eslint-disable no-console */
+  //   console.log('groceryList', this.props.groceryList, this);
+  // }
 
 
   render() {
