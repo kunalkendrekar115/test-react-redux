@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
-import { addItem, selectItem ,deselectItem,removeItem} from '../actions';
+import Actions from '../actions'
 
 import ListInputs from './ListInputs';
 import ListSelection from './ListSelection';
@@ -18,11 +17,18 @@ const mapStateToProps = ({
   groceryList, selectedItem, isItemSelected
 });
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    addItem, selectItem,deselectItem,removeItem
-  }, dispatch)
-);
+
+const mapDispatchToProps = dispatch => {
+
+  return {
+    addItem: item => dispatch(Actions.addItem(item)),
+    selectItem: item => dispatch(Actions.selectItem(item)),
+    deselectItem: item => dispatch(Actions.deselectItem(item)),
+    removeItem: item => dispatch(Actions.removeItem(item)),
+  }
+}
+
+
 
 class ListContainer extends Component {
   componentWillMount() {
@@ -30,27 +36,28 @@ class ListContainer extends Component {
     console.log('groceryList', this.props.groceryList, this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('groceryList', nextProps.groceryList, this);
-  }
 
   render() {
+
+    const { selectItem, deselectItem, removeItem,
+      isItemSelected, selectedItem, groceryList, addItem } = this.props
+
     return (
       <section className="groceryApp">
         <div>
-          <ListInputs addItem={this.props.addItem} />
+          <ListInputs addItem={addItem} />
         </div>
         <div className="types">
           <ListSelection
-            selectedItem={this.props.selectedItem}
-            isItemSelected={this.props.isItemSelected} />
+            selectedItem={selectedItem}
+            isItemSelected={isItemSelected} />
 
           <ListTable
-            onItemSelect={this.props.selectItem}
-            onItemDeselect={this.props.deselectItem}
-            onItemRemove={this.props.removeItem}
-            selectedItem={this.props.selectedItem}
-            groceryList={this.props.groceryList} />
+            onItemSelect={selectItem}
+            onItemDeselect={deselectItem}
+            onItemRemove={removeItem}
+            selectedItem={selectedItem}
+            groceryList={groceryList} />
         </div>
       </section>
     );

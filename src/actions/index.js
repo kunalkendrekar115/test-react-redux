@@ -1,28 +1,31 @@
 
-const duckRoot = 'app/groceries/';
+import Constants from './Constants'
 
-// Constants
-export const ADD_ITEM = `${duckRoot}ADD_ITEM`;
-export const REMOVE_ITEM = `${duckRoot}REMOVE_ITEM`;
-export const SELECT_ITEM = `${duckRoot}SELECT_ITEM`;
-export const DESELECT_ITEM = `${duckRoot}DESELECT_ITEM`;
+const Actions = {
 
-export const addItem = item => ({
-    type: ADD_ITEM,
-    payload: item,
-});
+    selectItem: item => {
+        return {
+            type: Constants.SELECT_ITEM,
+            payload: item,
+        }
+    },
+    addItem: item => ({
+        type: Constants.ADD_ITEM,
+        payload: item,
+    }),
 
-export const selectItem = item => ({
-    type: SELECT_ITEM,
-    payload: item,
-});
 
-export const deselectItem = item => ({
-    type: DESELECT_ITEM,
-    payload: item,
-});
+    deselectItem: item => ({
+        type: Constants.DESELECT_ITEM,
+        payload: item,
+    }),
 
-export const removeItem = item => ({
-    type: REMOVE_ITEM,
-    payload: item,
-});
+    removeItem: item => ({
+        type: Constants.REMOVE_ITEM,
+        payload: item,
+    })
+}
+
+export default Actions
+
+

@@ -1,5 +1,5 @@
 import update from 'immutability-helper';
-import { ADD_ITEM, SELECT_ITEM, DESELECT_ITEM, REMOVE_ITEM } from '../../actions'
+import Constants from '../../actions/Constants'
 
 
 export const initialState = {
@@ -43,18 +43,18 @@ export default function reducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case ADD_ITEM:
+    case Constants.ADD_ITEM:
       return update(state, {
         list: { $push: [payload] },
       });
 
-    case REMOVE_ITEM:
+    case Constants.REMOVE_ITEM:
       // Write a custom reducer that will remove an item from the list array
 
-      let index = state.list.findIndex((item) => payload.id == item.id)
+      let index = state.list.findIndex((item) => payload.id === item.id)
 
       // If item to be removed is selected then deselect and remove item
-      if (state.list[index].id == state.selectedItem.id) {
+      if (state.list[index].id === state.selectedItem.id) {
         
         return update(state, {
           list: { $splice: [[index, 1]] },
@@ -67,7 +67,7 @@ export default function reducer(state = initialState, action) {
           list: { $splice: [[index, 1]] },
         });
       }
-    case SELECT_ITEM:
+    case Constants.SELECT_ITEM:
       // Write a custom reducer that will select an item
 
       return update(state, {
@@ -76,7 +76,7 @@ export default function reducer(state = initialState, action) {
       });
 
 
-    case DESELECT_ITEM:
+    case Constants.DESELECT_ITEM:
       // Write a customer reducer that will deselect an item
       return update(state, {
         isItemSelected: { $set: false },
