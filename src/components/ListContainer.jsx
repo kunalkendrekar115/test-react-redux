@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Actions from '../actions'
-
+import { bindActionCreators } from 'redux';
 import ListInputs from './ListInputs';
 import ListSelection from './ListSelection';
 import ListTable from './ListTable';
@@ -17,16 +17,14 @@ const mapStateToProps = ({
 });
 
 
-const mapDispatchToProps = dispatch => {
-
-  return {
-    addItem: item => dispatch(Actions.addItem(item)),
-    selectItem: item => dispatch(Actions.selectItem(item)),
-    deselectItem: item => dispatch(Actions.deselectItem(item)),
-    removeItem: item => dispatch(Actions.removeItem(item)),
-  }
-}
-
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    addItem: item => Actions.addItem(item),
+    selectItem: item => Actions.selectItem(item),
+    deselectItem: item => Actions.deselectItem(item),
+    removeItem: item => Actions.removeItem(item),
+  }, dispatch)
+);
 
 
 class ListContainer extends Component {
