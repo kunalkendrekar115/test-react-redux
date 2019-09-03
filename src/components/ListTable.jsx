@@ -31,7 +31,7 @@ export const ListTable = (props) => {
           {
             groceryList.map((groceryItem) => {
               return (
-                <tr key={groceryItem.id}>
+                <tr key={+new Date() + Math.random()} >
                   <td>{groceryItem.name}</td>
                   <td>{groceryItem.category}</td>
                   <td>{groceryItem.deliveryMethod}</td>
